@@ -1,0 +1,19 @@
+[Unit]
+Description=CryptoBot Database Server
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/Database Server
+Environment="NODE_ENV=production"
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=cryptobot-db
+
+[Install]
+WantedBy=multi-user.target
+
